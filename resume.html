@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cheng-Yu (Jason) Tung — Résumé</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  @page { size: Letter; margin: 0.55in 0.6in 0.55in; }
+  :root { --ink: #2b221c; --ink-2: #5a4b40; --ink-3: #8a7a6c; --rule: #cbbfae; }
+  * { box-sizing: border-box; }
+  html { background: #e9e2d6; }
+  body {
+    margin: 0 auto; max-width: 8.5in; background: #fffdf9; color: var(--ink);
+    font: 10.1pt/1.38 "Source Serif 4", Georgia, serif; padding: 0.55in 0.6in;
+  }
+  @media print { html, body { background: #fff; } body { padding: 0; max-width: none; } }
+  a { color: inherit; text-decoration: none; }
+  header { text-align: center; margin-bottom: 8pt; }
+  h1 { font: 600 24pt/1.1 "Cormorant Garamond", Georgia, serif; margin: 0; letter-spacing: .01em; }
+  .contact { margin-top: 4pt; color: var(--ink-2); font-size: 8.9pt; white-space: nowrap; }
+  .contact span + span::before { content: "  ·  "; color: var(--ink-3); white-space: pre; }
+  .seeking { margin: 7pt 0 0; font-weight: 600; font-size: 10pt; letter-spacing: .02em; }
+  .summary { margin: 3pt 0 0; font-style: italic; color: var(--ink-2); text-align: center; font-size: 9.8pt; }
+  h2 {
+    font: 600 11.5pt/1 "Cormorant Garamond", Georgia, serif; letter-spacing: .14em; text-transform: uppercase;
+    margin: 12pt 0 5pt; padding-bottom: 3pt; border-bottom: 0.6pt solid var(--rule); break-after: avoid;
+  }
+  .item { margin: 0 0 6pt; break-inside: avoid; }
+  .row { display: flex; justify-content: space-between; gap: 12pt; align-items: baseline; }
+  .row .l { font-weight: 600; }
+  .row .r { color: var(--ink-2); white-space: nowrap; font-size: 9.4pt; }
+  .sub { color: var(--ink-2); font-style: italic; }
+  .sub .r { font-style: normal; }
+  ul { margin: 2pt 0 0; padding-left: 13pt; }
+  li { margin: 0 0 1.5pt; }
+  li::marker { color: var(--ink-3); }
+  .stack { color: var(--ink-3); font-weight: 400; font-style: italic; }
+  .skills { display: grid; grid-template-columns: 1.45in 1fr; gap: 2pt 10pt; }
+  .skills dt { font-weight: 600; }
+  .skills dd { margin: 0; }
+  .pub { margin: 0 0 5pt; padding-left: 14pt; text-indent: -14pt; break-inside: avoid; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Cheng-Yu (Jason) Tung</h1>
+  <div class="contact">
+    <span>Seattle, WA</span>
+    <span><a href="mailto:jason32718@gmail.com">jason32718@gmail.com</a></span>
+    <span><a href="https://zhengyutong99.github.io">zhengyutong99.github.io</a></span>
+    <span><a href="https://www.linkedin.com/in/cheng-yu-tung">linkedin.com/in/cheng-yu-tung</a></span>
+    <span><a href="https://github.com/zhengyutong99">github.com/zhengyutong99</a></span>
+  </div>
+  <p class="seeking">Seeking Summer 2027 AI / SWE / SDE Internships · Available from May 2027 · Open to co-op</p>
+  <p class="summary">M.S. Computer Science student with an M.S. in Bioinformatics and industry experience as an AI Engineer — building ML models, LLM systems and computer-vision pipelines, from research prototype to deployment.</p>
+</header>
+
+<h2>Education</h2>
+<div class="item">
+  <div class="row"><span class="l">Northeastern University</span><span class="r">Seattle, WA</span></div>
+  <div class="row sub"><span>Master of Science in Computer Science</span><span class="r">Sep 2026 – Present</span></div>
+  <ul><li>Coursework: Pattern Recognition &amp; Computer Vision, Programming Design Paradigms</li></ul>
+</div>
+<div class="item">
+  <div class="row"><span class="l">National Yang Ming Chiao Tung University (NYCU)</span><span class="r">Hsinchu, Taiwan</span></div>
+  <div class="row sub"><span>Master of Science, Institute of Bioinformatics and Systems Biology — GPA 3.66 / 4.3</span><span class="r">Sep 2022 – Dec 2024</span></div>
+  <div class="row sub"><span>Bachelor of Science, Department of Biological Science and Technology</span><span class="r">Sep 2018 – Jun 2022</span></div>
+  <ul><li>23 additional credits in CS: Machine Learning, Reinforcement Learning, Parallel Programming, Cloud Native Development, Object-Oriented Programming, Web Programming, Biostatistics</li></ul>
+</div>
+
+<h2>Experience</h2>
+<div class="item">
+  <div class="row"><span class="l">eNeural Technologies, Inc. <span class="stack">— Python, PyTorch, Hugging Face, Langfuse, Rust</span></span><span class="r">Hsinchu, Taiwan</span></div>
+  <div class="row sub"><span>Artificial Intelligence Engineer</span><span class="r">Feb 2026 – Jul 2026</span></div>
+  <ul>
+    <li>Cut HR/admin case load <b>~30% in 3 months</b> by leading design and deployment of an on-prem <b>LLM + RAG agent</b> that auto-resolves routine HR/admin inquiries from internal documents and routes complex cases to staff.</li>
+    <li>Sped up task turnaround <b>~2–3× in a 2-month pilot</b> by building an <b>LLM coding assistant</b> with agent-harness tool routing, scenario-specific prompt templates, and Langfuse token/cost observability.</li>
+    <li>Deployed <b>pre-quantized Q4/Q8 LLMs</b> (LLaMA, Qwen, Gemma) on <b>NVIDIA Jetson Orin</b> via llama.cpp, beating server-hosted models queried via API in tests; built a modular <b>Rust inference pipeline</b> passing Protobuf messages over Zenoh pub/sub.</li>
+    <li>Built a real-time traffic-flow system that maps objects from camera video (YOLO detection, UniDepthV2 depth, OpenStreetMap), refined against LiDAR ground truth; streamed live overlays via WebSocket.</li>
+  </ul>
+</div>
+<div class="item">
+  <div class="row"><span class="l">BioXGEM Lab, NYCU <span class="stack">— Python, PyTorch, TensorFlow, Scikit-learn, Pandas, PHP</span></span><span class="r">Hsinchu, Taiwan</span></div>
+  <div class="row sub"><span>Graduate Researcher → Research Assistant · Advisor: Prof. Jinn-Moon Yang</span><span class="r">Jul 2022 – Apr 2025</span></div>
+  <ul>
+    <li>Increased <b>F1 ~2×</b>, recall ~1.5× and precision ~20% over baseline at comparable AUC by building an interpretable <b>Graph Transformer + GCN</b> on drug–target–pathway–disease networks (first author; under revision, <i>Bioinformatics</i>).</li>
+    <li>Visualized how each drug inhibits target proteins and modulates disease pathways, turning model output into mechanistic hypotheses for domain scientists.</li>
+    <li>Co-developed a <b>Random Forest + SHAP</b> scoring model integrating multi-omics, drug, protein and pathway data to predict new drug indications — 4th Place poster at MOPM 2023; the work received NHRI research funding.</li>
+    <li>Built multi-omics and drug–target–pathway datasets (2,614 drugs, 20,501 targets, 8,208 pathways, 455 diseases) with Pandas/NumPy for model training and evaluation.</li>
+    <li>Led the 4-member AI Research Subgroup for 16 months: assigned tasks, set research directions and integrated results across ML projects.</li>
+    <li>Headed lab server management: Linux GPU training nodes and web hosts, Conda/CUDA setup, group-based permissions, SSH access policy and firewall rules.</li>
+  </ul>
+</div>
+<div class="item">
+  <div class="row"><span class="l">Bioinformatics Center, Kyoto University <span class="stack">— PyTorch, TensorFlow, RDKit</span></span><span class="r">Kyoto, Japan</span></div>
+  <div class="row sub"><span>Visiting Research Collaborator · Host: Prof. Tatsuya Akutsu</span><span class="r">Oct 2023 – Dec 2023</span></div>
+  <ul>
+    <li>Represented BioXGEM Lab in an international collaboration; co-developed a SMILES-based <b>Transformer generator</b> producing novel 2D molecules with protein-targeting functional groups.</li>
+    <li>Extended earlier work on an ensemble-guided RL reward for molecule generation, which received government research funding.</li>
+  </ul>
+</div>
+<div class="item">
+  <div class="row"><span class="l">Protein Crystallography &amp; Structure-based Drug Design Lab, NYCU</span><span class="r">Hsinchu, Taiwan</span></div>
+  <div class="row sub"><span>Undergraduate Researcher · Advisor: Prof. Yu-Yuan Hsiao</span><span class="r">Jul 2020 – Jun 2022</span></div>
+  <ul>
+    <li>Investigated RNaseH1 binding mechanisms with a Ph.D. researcher using protein crystallization, nuclease activity assays and computational structural modeling.</li>
+    <li>Produced molecular visualizations and animations with Python, PyMOL and Premiere Pro; co-created a science-communication video on TREX1.</li>
+  </ul>
+</div>
+
+<h2>Publications</h2>
+<p class="pub">[1] <b>Cheng-Yu Tung</b>, et al. “Encoding Drug–Target–Pathway–Disease Profiles for Drug–Cancer Association Prediction using Graph Transformer–Convolution Networks.” <i>Bioinformatics</i>, under revision, 2025.</p>
+<p class="pub">[2] Yun-Ti Chen, <b>Cheng-Yu Tung</b>, Wei-Cheng Chang, Tze-Shin Chen, Ya-Ko Wei, Yen-Chao Hsu, Jinn-Moon Yang. “Infer Precision Cancer Targets and Drug Responses by Encoding Omics–Drug–Protein–Pathway Associations.” Multiomics &amp; Precision Medicine Joint Conference (MOPM), 2023. <i>4th Place Poster Award.</i></p>
+
+<h2>Projects</h2>
+<div class="item">
+  <div class="row"><span class="l">Marswalk: Mars EVA Planner — NASA Space Apps 2026, solo <span class="stack">— Python, rasterio, Three.js</span></span><span class="r">Nov 2026</span></div>
+  <ul>
+    <li>Built a web planner for astronaut EVAs on real Mars terrain, fusing data from 5 NASA missions (HiRISE, THEMIS, CRISM, rover imagery) into 8 layers; streamed Cloud-Optimized GeoTIFF tiles via rasterio into site grids.</li>
+    <li>Wrote an <b>A* route planner</b> on a 10 m terrain-cost grid with GO / NO-GO checks for O₂, battery, radiation and sand-trap risk; built a first-person Three.js rehearsal with a Mars sun model, shadows, HUD minimap and debrief.</li>
+  </ul>
+</div>
+<div class="item">
+  <div class="row"><span class="l">Groundline: NISAR Subsidence Map — NASA Space Apps 2026, team of 5 <span class="stack">— InSAR, GPS, Python</span></span><span class="r">Nov 2026</span></div>
+  <ul>
+    <li>Validated NISAR subsidence against external GPS data and the state InSAR map (GPS −5.8 vs map −5.9 cm).</li>
+    <li>Co-identified a crop-related radar bias (32/32 towns); masked farmland to confirm 170,900+ residents on sinking ground.</li>
+  </ul>
+</div>
+<div class="item">
+  <div class="row"><span class="l">Computer Vision Projects — CS 5330, Northeastern <span class="stack">— C++, OpenCV, ONNX Runtime</span></span><span class="r">2026</span></div>
+  <ul>
+    <li><b>Calibration &amp; AR:</b> calibrated a camera from checkerboard frames, estimated pose with solvePnP and rendered a virtual 3D object anchored to the board in live video.</li>
+    <li><b>2D object recognition:</b> implemented thresholding, morphology and region analysis from scratch; classified objects with hand-crafted features, one-shot ResNet18 embeddings and PCA, with unknown-object rejection.</li>
+    <li><b>Image retrieval:</b> compared color histograms, texture features, DNN embeddings and YOLO detections for query-by-example search.</li>
+    <li><b>Real-time filters:</b> hand-written blur, Sobel and quantization filters on live video, plus Depth Anything V2 monocular depth via ONNX Runtime.</li>
+  </ul>
+</div>
+<div class="item">
+  <div class="row"><span class="l">GPU Acceleration for Molecular Docking (iGEMDOCK) <span class="stack">— C++, CUDA</span></span><span class="r">Jan 2024</span></div>
+  <ul><li>Parallelized the O(N×M) ligand–cavity energy evaluation in CUDA, achieving up to <b>2× faster</b> runtime over the CPU baseline; analyzed load imbalance and transfer overhead for small ligands.</li></ul>
+</div>
+<div class="item">
+  <div class="row"><span class="l">Reinforcement Learning Agents <span class="stack">— Python, PyTorch, Gymnasium</span></span><span class="r">Dec 2023</span></div>
+  <ul><li>Trained DQN, PPO and TD3 agents on Gym environments, and a vision-based racecar agent driving from single RGB frames using frame stacking, recurrent policies and reward shaping.</li></ul>
+</div>
+<div class="item">
+  <div class="row"><span class="l">Factory Alert &amp; Monitoring System <span class="stack">— React, Node.js, Firebase, Docker, CI/CD</span></span><span class="r">Jun 2023</span></div>
+  <ul><li>Co-built a cloud-native real-time alert app: containerized microservices crawl earthquake, power and reservoir open data, raise severity-ranked alarms and show them on a dashboard, with Firebase auth/storage and Dockerized CI/CD.</li></ul>
+</div>
+<div class="item">
+  <div class="row"><span class="l">Lab Onboarding Website <span class="stack">— PHP, Python, JavaScript</span></span><span class="r">Aug 2022</span></div>
+  <ul><li>Built BioXGEM Lab’s onboarding and training site for new members with a PHP/Python back end and JavaScript front end.</li></ul>
+</div>
+<div class="item">
+  <div class="row"><span class="l">Browser Shooting Game <span class="stack">— JavaScript, HTML, CSS</span></span><span class="r">Jun 2022</span></div>
+  <ul><li>Developed a browser-based battleship shooter with approaching enemies and item-based power-ups that vary difficulty.</li></ul>
+</div>
+
+<h2>Leadership &amp; Service</h2>
+<div class="item">
+  <div class="row"><span class="l">President, Mountain Culture Service Club, NYCU</span><span class="r">Sep 2019 – Sep 2020</span></div>
+  <ul><li>Led ~30 members in weekly outreach to rural Hsinchu elementary schools; partnered with AUO Corporation to bring educational resources to Indigenous communities.</li></ul>
+</div>
+<div class="item">
+  <div class="row"><span class="l">Organizer, Indigenous Culture Winter Camp</span><span class="r">Jan 2020</span></div>
+  <ul><li>Led a 5-day / 4-night program bringing children from rural regions to museums and college campus activities.</li></ul>
+</div>
+<div class="item">
+  <div class="row"><span class="l">Activity Director, NCTU Biotechnology Summer Camp</span><span class="r">2020</span></div>
+  <ul><li>Led a 10-member team designing interactive programs, team-building tasks and entertainment sessions.</li></ul>
+</div>
+<div class="item">
+  <div class="row"><span class="l">Volunteer Volleyball Coach, rural elementary schools</span><span class="r">2023 – 2024</span></div>
+  <ul><li>Taught volleyball on weekends and secured corporate sponsorship that enabled several schools to co-host friendly tournaments.</li></ul>
+</div>
+
+<h2>Awards</h2>
+<div class="item">
+  <div class="row"><span>4th Place Poster Award — Multiomics &amp; Precision Medicine Joint Conference</span><span class="r">Nov 2023</span></div>
+  <div class="row"><span>1st Place, Service-Learning Excellence Award — Outstanding Team Project</span><span class="r">Sep 2020</span></div>
+</div>
+
+<h2>Skills</h2>
+<dl class="skills">
+  <dt>Languages</dt><dd>Python, C++, Rust, Java, TypeScript/JavaScript, PHP, Bash, HTML/CSS</dd>
+  <dt>ML &amp; Deep Learning</dt><dd>PyTorch, TensorFlow, Scikit-learn, Pandas, NumPy, graph neural networks, reinforcement learning, SHAP</dd>
+  <dt>LLM</dt><dd>Hugging Face, RAG, LLM agents, LlamaIndex, llama.cpp, quantization (Q4/Q8), Langfuse, prompt engineering</dd>
+  <dt>Vision &amp; 3D</dt><dd>OpenCV, ONNX Runtime, YOLO, camera calibration, Three.js, PyMOL</dd>
+  <dt>Systems &amp; Tools</dt><dd>CUDA, OpenMP, MPI, Docker, CI/CD, Linux, Git, Protobuf, Zenoh, WebSocket, Firebase, LaTeX</dd>
+  <dt>Science</dt><dd>Bioinformatics, RDKit, multi-omics, drug discovery, BLAST, geospatial (InSAR, rasterio)</dd>
+  <dt>Spoken</dt><dd>Mandarin (native), English (fluent), Japanese (basic)</dd>
+</dl>
+</body>
+</html>
