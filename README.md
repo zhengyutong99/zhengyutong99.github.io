@@ -16,6 +16,8 @@ Settings in `js/content.js`:
 - `analytics.cloudflareToken` — Cloudflare Web Analytics token (empty = no tracking).
 - "Recently on GitHub" is fetched live from the GitHub API (cached 30 min per visit).
 
+After changing CSS or JS, bump the `?v=` number on those files in `index.html` so visitors don't get a cached copy.
+
 Preview locally:
 
 ```bash
