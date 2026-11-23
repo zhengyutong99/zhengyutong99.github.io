@@ -25,6 +25,9 @@
     download: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg>',
     mail: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="1.5"/><path d="m4 7 8 6 8-6"/></svg>',
     github: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>',
+    coffee: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9Z"/><path d="M16 10.5h1.5a2.5 2.5 0 0 1 0 5H16M9 3.5c-.8 1 .8 1.8 0 3M12.5 3.5c-.8 1 .8 1.8 0 3"/></svg>',
+    copy: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="1.5"/><path d="M15.5 8.5V6a1.5 1.5 0 0 0-1.5-1.5H6A1.5 1.5 0 0 0 4.5 6v8A1.5 1.5 0 0 0 6 15.5h2.5"/></svg>',
+    check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>',
     linkedin: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M8 10.5V16M8 7.8v.1M11.5 16v-5.5M11.5 13c0-1.6 1-2.6 2.4-2.6S16 11.4 16 13v3"/></svg>'
   };
 
@@ -280,6 +283,106 @@
       "</div>";
   }
 
+
+  /* ---------- at a glance / news / GitHub ---------- */
+  var gh = null; // cached repo list
+  var GH_USER = (C.profile.github.match(/github\.com\/([^\/?#]+)/) || [])[1];
+
+  function coffeeLink() {
+    var p = C.profile;
+    if (p.calendar) return { href: p.calendar, label: UI[lang].coffee, ext: true };
+    var subj = encodeURIComponent(lang === "zh" ? "約 15 分鐘咖啡聊天" : "15-min coffee chat");
+    return { href: "mailto:" + p.email + "?subject=" + subj, label: UI[lang].coffeeMail, ext: false };
+  }
+
+  function timeAgo(iso) {
+    var diff = (new Date(iso).getTime() - Date.now()) / 1000;
+    var units = [["year", 31536000], ["month", 2592000], ["week", 604800], ["day", 86400], ["hour", 3600], ["minute", 60]];
+    var rtf = window.Intl && Intl.RelativeTimeFormat ? new Intl.RelativeTimeFormat(lang === "zh" ? "zh-Hant" : "en", { numeric: "auto" }) : null;
+    for (var i = 0; i < units.length; i++) {
+      if (Math.abs(diff) >= units[i][1] || i === units.length - 1) {
+        var v = Math.round(diff / units[i][1]);
+        return rtf ? rtf.format(v, units[i][0]) : Math.abs(v) + " " + units[i][0] + "s ago";
+      }
+    }
+  }
+
+  function githubHtml() {
+    if (!gh || !gh.length) return "";
+    return '<div class="gh reveal">' +
+      '<div class="gh__head"><h3 class="subhead">' + esc(UI[lang].githubTitle) + '</h3>' +
+        '<a class="link-arrow" href="' + esc(C.profile.github) + '?tab=repositories" target="_blank" rel="noopener">' + esc(UI[lang].githubAll) + ICON.arrow + "</a></div>" +
+      '<ul class="gh__list">' + gh.map(function (r) {
+        return '<li><a href="' + esc(r.url) + '" target="_blank" rel="noopener">' +
+          '<span class="gh__name">' + esc(r.name) + "</span>" +
+          (r.desc ? '<span class="gh__desc">' + esc(r.desc) + "</span>" : "") +
+          '<span class="gh__meta">' + (r.lang ? '<span class="gh__lang">' + esc(r.lang) + "</span>" : "") +
+            esc(UI[lang].updatedAgo.replace("{t}", timeAgo(r.pushed))) + "</span>" +
+        "</a></li>";
+      }).join("") + "</ul>" +
+    "</div>";
+  }
+
+  function renderNow() {
+    var ui = UI[lang], p = C.profile, c = coffeeLink();
+    var rows = C.glance.slice();
+    if (p.workAuth) rows.push({ k: { en: UI.en.workAuth, zh: UI.zh.workAuth }, v: p.workAuth });
+    $("now").innerHTML =
+      '<div class="wrap">' +
+        '<div class="now__grid">' +
+          '<div class="glance reveal">' +
+            '<p class="glance__title">' + esc(ui.glanceTitle) + '<span>' + esc(ui.glanceSub) + "</span></p>" +
+            '<dl class="glance__list">' + rows.map(function (r) {
+              return "<div><dt>" + esc(L(r.k)) + "</dt><dd>" + esc(L(r.v)) + "</dd></div>";
+            }).join("") + "</dl>" +
+            '<div class="glance__actions">' +
+              '<a class="btn btn--primary btn--sm" href="' + esc(c.href) + '"' + (c.ext ? ' target="_blank" rel="noopener"' : "") + '>' + ICON.coffee + esc(c.label) + "</a>" +
+              '<a class="btn btn--sm" href="' + esc(p.resume) + '" target="_blank" rel="noopener">' + ICON.download + esc(ui.resume) + "</a>" +
+            "</div>" +
+          "</div>" +
+          '<div class="news reveal">' +
+            '<h3 class="subhead">' + esc(ui.newsTitle) + "</h3>" +
+            '<ol class="news__list">' + C.news.map(function (n, i) {
+              return '<li' + (i === 0 ? ' class="is-now"' : "") + '><span class="news__date">' + esc(L(n.date)) + "</span><p>" + L(n.text) + "</p></li>";
+            }).join("") + "</ol>" +
+          "</div>" +
+        "</div>" +
+        '<div id="ghSlot">' + githubHtml() + "</div>" +
+      "</div>";
+  }
+
+  function loadGithub() {
+    if (!GH_USER || !window.fetch) return;
+    var KEY = "gh-repos-v1", TTL = 30 * 60 * 1000;
+    try {
+      var cached = JSON.parse(sessionStorage.getItem(KEY) || "null");
+      if (cached && Date.now() - cached.t < TTL) { gh = cached.d; return; }
+    } catch (e) {}
+    fetch("https://api.github.com/users/" + GH_USER + "/repos?sort=pushed&per_page=12")
+      .then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (list) {
+        var skip = [GH_USER.toLowerCase(), (GH_USER + ".github.io").toLowerCase()];
+        gh = list.filter(function (r) { return !r.fork && !r.private && skip.indexOf(r.name.toLowerCase()) < 0; })
+          .slice(0, 4)
+          .map(function (r) { return { name: r.name, url: r.html_url, desc: r.description, lang: r.language, pushed: r.pushed_at }; });
+        try { sessionStorage.setItem(KEY, JSON.stringify({ t: Date.now(), d: gh })); } catch (e) {}
+        var slot = $("ghSlot");
+        if (slot) { slot.innerHTML = githubHtml(); setupReveal(); }
+      })
+      .catch(function () {});
+  }
+
+  /* ---------- analytics (Cloudflare Web Analytics, optional) ---------- */
+  function loadAnalytics() {
+    var token = (C.analytics || {}).cloudflareToken;
+    if (!token || /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)) return;
+    var s = document.createElement("script");
+    s.defer = true;
+    s.src = "https://static.cloudflareinsights.com/beacon.min.js";
+    s.setAttribute("data-cf-beacon", JSON.stringify({ token: token }));
+    document.head.appendChild(s);
+  }
+
   function renderContact() {
     var p = C.profile;
     var cup = '<svg class="cup" viewBox="0 0 64 64" aria-hidden="true">' +
@@ -289,7 +392,11 @@
       '<div class="wrap">' +
         '<div class="section__head reveal">' + cup + '<span class="section__num">07</span><h2 class="section__title">' + esc(UI[lang].sections.contact) + "</h2></div>" +
         '<p class="contact__text reveal">' + esc(UI[lang].contactText) + "</p>" +
-        '<a class="contact__email reveal" href="mailto:' + esc(p.email) + '">' + esc(p.email) + "</a>" +
+        '<div class="contact__row reveal">' +
+          '<a class="contact__email" href="mailto:' + esc(p.email) + '">' + esc(p.email) + "</a>" +
+          '<button class="copy-btn" type="button" id="copyBtn" data-email="' + esc(p.email) + '" aria-label="' + esc(UI[lang].copy) + '" title="' + esc(UI[lang].copy) + '">' + ICON.copy + "</button>" +
+        "</div>" +
+        '<div class="contact__cta reveal"><a class="btn btn--primary" href="' + esc(coffeeLink().href) + '"' + (coffeeLink().ext ? ' target="_blank" rel="noopener"' : "") + '>' + ICON.coffee + esc(coffeeLink().label) + "</a></div>" +
         '<div class="contact__icons reveal">' +
           '<a class="icon-link" href="' + esc(p.github) + '" target="_blank" rel="noopener" aria-label="GitHub">' + ICON.github + "</a>" +
           '<a class="icon-link" href="' + esc(p.linkedin) + '" target="_blank" rel="noopener" aria-label="LinkedIn">' + ICON.linkedin + "</a>" +
@@ -326,6 +433,7 @@
     document.title = lang === "zh" ? "童政瑜 Cheng-Yu (Jason) Tung" : "Cheng-Yu (Jason) Tung";
     renderNav();
     renderHero();
+    renderNow();
     renderAbout();
     renderExperience();
     renderPublications();
@@ -362,7 +470,36 @@
     var stored = null;
     try { stored = localStorage.getItem("lang"); } catch (e) {}
     lang = q === "zh" || q === "en" ? q : stored === "zh" ? "zh" : "en";
+    loadGithub();
     render();
+    loadAnalytics();
+
+    document.addEventListener("click", function (e) {
+      var cb = e.target.closest("#copyBtn");
+      if (!cb) return;
+      var email = cb.getAttribute("data-email");
+      var done = function () {
+        cb.innerHTML = ICON.check;
+        cb.classList.add("is-done");
+        cb.setAttribute("aria-label", UI[lang].copied);
+        cb.title = UI[lang].copied;
+        setTimeout(function () {
+          cb.innerHTML = ICON.copy;
+          cb.classList.remove("is-done");
+          cb.setAttribute("aria-label", UI[lang].copy);
+          cb.title = UI[lang].copy;
+        }, 1800);
+      };
+      var legacy = function () {
+        var ta = document.createElement("textarea");
+        ta.value = email; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.select();
+        try { if (document.execCommand("copy")) done(); } catch (err) {}
+        ta.remove();
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(email).then(done, legacy);
+      else legacy();
+    });
 
     $("langBtn").addEventListener("click", function () { setLang(lang === "en" ? "zh" : "en", true); });
     $("themeBtn").addEventListener("click", function () {

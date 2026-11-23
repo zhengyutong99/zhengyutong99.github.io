@@ -27,8 +27,33 @@ window.CONTENT = {
     email: "jason32718@gmail.com",
     linkedin: "https://www.linkedin.com/in/cheng-yu-tung",
     github: "https://github.com/zhengyutong99",
-    resume: "assets/Cheng-Yu_Tung_Resume.pdf"
+    resume: "assets/Cheng-Yu_Tung_Resume.pdf",
+    // Booking link for the "coffee chat" button. Empty = pre-filled email instead.
+    calendar: "https://cal.com/jason-tung-qxuue4/15min",
+    // Shown in the "At a glance" card; set to null to hide.
+    workAuth: { en: "F-1 student · eligible for CPT", zh: "F-1 學生簽證 · 可申請 CPT" }
   },
+
+  // Private analytics (Cloudflare Web Analytics, cookie-free). Paste the token from
+  // Cloudflare → Analytics & Logs → Web Analytics → your site → "JS snippet".
+  // Empty = no tracking script is loaded.
+  analytics: { cloudflareToken: "" },
+
+  // "At a glance" card for recruiters (shown under the hero).
+  glance: [
+    { k: { en: "Looking for", zh: "目標職位" }, v: { en: "AI / ML Engineer · SWE · SDE internship", zh: "AI／ML 工程 · 軟體工程（SWE／SDE）實習" } },
+    { k: { en: "Start", zh: "可開始" }, v: { en: "May 2027 · Summer or co-op during the semester", zh: "2027 年 5 月起 · 暑期或學期中 Co-op 皆可" } },
+    { k: { en: "Location", zh: "地點" }, v: { en: "Seattle now · Open to relocation", zh: "目前在西雅圖 · 可配合搬遷" } },
+    { k: { en: "Strongest at", zh: "最擅長" }, v: { en: "LLM + RAG systems · Graph ML · Computer vision · CUDA", zh: "LLM + RAG 系統 · 圖神經網路 · 電腦視覺 · CUDA" } }
+  ],
+
+  // Dated news, newest first. Keep 3–5 items.
+  news: [
+    { date: { en: "Now", zh: "進行中" }, text: { en: "First-author GTCN paper (drug–cancer association) under revision at <i>Bioinformatics</i>.", zh: "第一作者 GTCN 論文（藥物–癌症關聯預測）於 <i>Bioinformatics</i> 修訂中。" } },
+    { date: { en: "Nov 2026", zh: "2026.11" }, text: { en: "Built <b>Marswalk</b> solo and <b>Groundline</b> with a team of 5 at NASA Space Apps Challenge 2026.", zh: "NASA Space Apps Challenge 2026：個人完成 <b>Marswalk</b>，並與 5 人團隊完成 <b>Groundline</b>。" } },
+    { date: { en: "Sep 2026", zh: "2026.09" }, text: { en: "Started the M.S. in Computer Science at Northeastern University, Seattle.", zh: "進入東北大學（西雅圖）資工碩士班。" } },
+    { date: { en: "Jul 2026", zh: "2026.07" }, text: { en: "Wrapped up at eNeural: an on-prem LLM + RAG agent that cut HR/admin case load by ~30%.", zh: "結束 eNeural 的工作：落地的地端 LLM + RAG 助理減少約 30% 人資／行政案件量。" } }
+  ],
 
   about: {
     paragraphs: [
@@ -443,6 +468,17 @@ window.UI = {
     contactText: "I’m looking for Summer 2027 internships in AI, ML engineering and software development. If your team is hiring — or you just want to talk research — my inbox is always open.",
     footer: "Designed & built by Cheng-Yu Tung",
     updated: "Last updated Nov 2026",
+    glanceTitle: "At a glance",
+    glanceSub: "For recruiters, in 30 seconds",
+    workAuth: "Work authorization",
+    newsTitle: "Latest",
+    githubTitle: "Recently on GitHub",
+    githubAll: "All repositories",
+    updatedAgo: "updated {t}",
+    coffee: "Book a 15-min coffee chat",
+    coffeeMail: "Suggest a 15-min coffee chat",
+    copy: "Copy email",
+    copied: "Copied",
     langSwitch: "中文",
     themeLabel: "Toggle dark mode"
   },
@@ -459,6 +495,17 @@ window.UI = {
     contactText: "我正在尋找 2027 暑期 AI、機器學習工程與軟體開發相關的實習。如果你的團隊有職缺，或只是想聊聊研究，都歡迎來信。",
     footer: "由童政瑜設計與製作",
     updated: "最後更新：2026 年 11 月",
+    glanceTitle: "快速了解",
+    glanceSub: "給招募者的 30 秒摘要",
+    workAuth: "工作身分",
+    newsTitle: "最近動態",
+    githubTitle: "最近在 GitHub 上",
+    githubAll: "所有 repo",
+    updatedAgo: "{t}更新",
+    coffee: "預約 15 分鐘咖啡聊天",
+    coffeeMail: "約 15 分鐘咖啡聊天",
+    copy: "複製 email",
+    copied: "已複製",
     langSwitch: "EN",
     themeLabel: "切換深色模式"
   }
