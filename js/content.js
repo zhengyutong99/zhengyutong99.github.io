@@ -37,7 +37,7 @@ window.CONTENT = {
   // Private analytics (Cloudflare Web Analytics, cookie-free). Paste the token from
   // Cloudflare → Analytics & Logs → Web Analytics → your site → "JS snippet".
   // Empty = no tracking script is loaded.
-  analytics: { cloudflareToken: "" },
+  analytics: { cloudflareToken: "f38f5cc662d94c31a5de13d486ead0f0" },
 
   // "At a glance" card for recruiters (shown under the hero).
   glance: [
